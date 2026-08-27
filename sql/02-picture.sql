@@ -1,0 +1,15 @@
+-- ========== 图片表（第 4 期任务）==========
+-- TODO 第 4 期：参考 01-user.sql 的写法，根据 docs/04-数据库设计.md
+-- 和 Picture 实体类，自己写出建表语句。
+--
+-- 字段清单（实体类里都有，注意类型和注释）：
+-- id / url / name / introduction / category / tags / picSize / picWidth
+-- / picHeight / picScale / picFormat / userId / editTime / createTime
+-- / updateTime / isDelete
+--
+-- 思考：
+-- 1. url 存多长？（512 够吗？）
+-- 2. tags 是 JSON 数组字符串，用什么类型？
+-- 3. 哪些字段要建索引？（第 5 期会加 reviewStatus 索引，第 7 期加 spaceId 索引）
+
+-- CREATE TABLE IF NOT EXISTS picture ( ... );

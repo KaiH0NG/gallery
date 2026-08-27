@@ -1,0 +1,17 @@
+-- ========== 空间表（第 7 期任务）==========
+-- TODO 第 7 期：自己写出建表语句。
+--
+-- 字段清单（Space 实体类里有）：
+-- id / spaceName / spaceLevel / maxSize / maxCount / totalSize
+-- / totalCount / spaceType / userId / editTime / createTime
+-- / updateTime / isDelete
+--
+-- 思考：
+-- 1. 为什么 spaceLevel 用 int 而不是 varchar？
+-- 2. totalSize / totalCount 为什么要建索引？（管理员空间排行分析第 10 期用）
+-- 3. spaceType 是什么时候加的？（第 11 期团队空间）
+--
+-- 第 11 期还有成员表 space_user：
+-- id / spaceId / userId / spaceRole / createTime / updateTime
+
+-- CREATE TABLE IF NOT EXISTS space ( ... );

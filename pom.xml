@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父工程：Spring Boot 2.7.6（教程版本，JDK 8/11/17 均可，推荐 11） -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.6</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.kai</groupId>
+    <artifactId>gallery</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>kai-picture-backend</name>
+    <description>智能协同云图库后端</description>
+
+    <properties>
+        <java.version>11</java.version>
+        <!-- Lombok 版本升级到 1.18.30：支持 JDK 21（1.18.24 会报 NoSuchFieldError） -->
+        <lombok.version>1.18.30</lombok.version>
+    </properties>
+
+    <dependencies>
+        <!-- Web 服务：内嵌 Tomcat，提供 HTTP 接口 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- MyBatis-Plus：数据库 CRUD 增强（教程 3.5.9）
+             注意：不要再引入 mybatis 原生依赖，会版本冲突！ -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.9</version>
+        </dependency>
+
+        <!-- MySQL 驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Hutool 工具库：字符串/日期/文件/加密等 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.26</version>
+        </dependency>
+
+        <!-- Knife4j 接口文档（OpenAPI 2 版本，适配 Spring Boot 2.x） -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+
+        <!-- Lombok：@Data @Slf4j 等注解简化代码 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 单元测试（第 6 期测 Redis 用） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- ========== 以下依赖：用到对应期次时取消注释 ========== -->
+
+        <!-- 腾讯云 COS 对象存储 SDK（第 4 期 图片存储）
+             版本 5.6.227：适用于 Java 8+；如需其他版本参考腾讯云官方文档 -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.227</version>
+        </dependency>
+
+        <!-- Jsoup 网页抓取（第 5 期 批量抓取图片） -->
+        <!--
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.15.3</version>
+        </dependency>
+        -->
+
+        <!-- Redis 分布式缓存（第 6 期 图片查询优化） -->
+        <!--
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        -->
+
+        <!-- Caffeine 本地缓存（第 6 期 多级缓存，注意 3.x 需要 JDK 11+） -->
+        <!--
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>3.1.8</version>
+        </dependency>
+        -->
+
+        <!-- Sa-Token 权限框架（第 11 期 空间成员权限） -->
+        <!--
+        <dependency>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
+            <version>1.37.0</version>
+        </dependency>
+        -->
+
+        <!-- WebSocket 双向通信（第 12 期 图片协同编辑） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+
+        <!-- Disruptor 高性能无锁队列（第 12 期 优化协同编辑消息处理） -->
+        <!--
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>3.4.4</version>
+        </dependency>
+        -->
+
+        <!-- ShardingSphere 分库分表（第 11 期 空间数据管理） -->
+        <!--
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+        -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 打包插件：mvn package 后生成可执行 jar -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

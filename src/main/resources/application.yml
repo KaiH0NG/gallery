@@ -1,0 +1,54 @@
+# ========== 项目配置文件 ==========
+# 第 2 期任务：改成你自己的 MySQL 账号密码，然后启动项目
+# 第 4 期任务：填 COS 配置（腾讯云对象存储）
+# 第 6 期任务：打开 Redis 配置
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api   # 所有接口前缀 /api
+
+spring:
+  application:
+    name: kai-picture-backend
+  # MySQL 配置（第 2 期修改账号密码）
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kai_picture
+    username: root
+    password: 123456
+  # Redis 配置（第 6 期打开注释）
+  # redis:
+  #   host: localhost
+  #   port: 6379
+  #   database: 0
+
+mybatis-plus:
+  configuration:
+    # 实体类字段用驼峰命名，数据库字段用下划线命名时，开启自动映射
+    map-underscore-to-camel-case: true
+    # 打印 SQL 日志（开发期方便调试，上线前关闭）
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 逻辑删除（思考：为什么所有表都用逻辑删除？）
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+# 接口文档：启动后访问 http://localhost:8123/api/doc.html
+knife4j:
+  enable: true
+
+# ===== 腾讯云 COS 对象存储（第 4 期填写） =====
+# cos:
+#   client:
+#     host: https://xxxx.cos.ap-shanghai.myqcloud.com   # 存储桶访问域名
+#     secretId: 你的 SecretId
+#     secretKey: 你的 SecretKey
+#     region: ap-shanghai                                # 地域
+#     bucket: 你的存储桶名称
+
+# ===== AI 绘图大模型（第 9 期填写，阿里云百炼） =====
+# ai:
+#   apiKey: 你的 API Key

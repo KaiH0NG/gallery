@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    图片 Mapper XML —— 自定义 SQL 放这里。
+    第 4 期：BaseMapper 的现成方法够用，本文件可以先不写任何 SQL
+    第 6 期：缩略图字段加进 resultMap 和查询列
+    第 10 期：聚合分析 SQL（按分类统计数量、按大小分段统计等）
+-->
+<mapper namespace="com.kai.kaipicturebackend.mapper.PictureMapper">
+
+    <!-- TODO 第 6 期：补充基础结果映射（id, url, thumbnailUrl, name, ...） -->
+
+    <!-- TODO 第 10 期：分类分析聚合 SQL 示例
+    <select id="xxx" resultType="...">
+        SELECT category, COUNT(*) AS count, SUM(picSize) AS totalSize
+        FROM picture
+        WHERE ... GROUP BY category
+    </select>
+    -->
+</mapper>
